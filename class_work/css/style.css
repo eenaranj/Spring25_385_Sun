@@ -1,0 +1,27 @@
+/* 
+Developer: John Smith
+Student ID: 12345678
+File name: style.css 
+*/
+
+/* element selector */
+/* make the text of ALL paragraphs yellow */
+p {
+    color: yellow;
+}
+
+/* id selector */
+#purple,
+#abc,
+#xyz {
+    color: purple;
+}
+
+#red {
+    color: red;
+}
+
+/* class selector */
+.blue {
+    color: blue;
+}
