@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+</head>
+
+<body>
+
+    <h3>User Form</h3>
+
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td>
+                <input type="text" name="fname" id="fname" placeholder="Enter First Name" required> * Required
+            </td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td>
+                <input type="text" name="lname" id="lname" placeholder="Enter Last Name" required>
+            </td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>
+                <input type="text" name="phone" id="phone" placeholder="Enter Phone Number">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Email</td>
+            <td>
+                <input type="text" name="email" id="email" value="enaranjorivera@bmcc.cuny.edu">
+            </td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td>
+                <input type="number" name="age" id="age" placeholder="Enter Age">
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;">State</td>
+            <td>
+                <select name="state" id="state" required>
+                    <option value="">-select-</option>
+                    <option value="NY">New York</option>
+                    <option value="NJ">New Jersey</option>
+                    <option value="CT">Connecticut</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;">Education Level</td>
+            <td>
+                <input type="radio" name="educationLevel" id="hs" value="hs">High School<br>
+                <input type="radio" name="educationLevel" id="some" value="hs" checked>Some College no degree<br>
+                <input type="radio" name="educationLevel" id="ad" value="ad">Associate Degree<br>
+                <input type="radio" name="educationLevel" id="bd" value="bd">Bachelor's Degree<br>
+                <input type="radio" name="educationLevel" id="md" value="md">Master's Degree<br>
+                <input type="radio" name="educationLevel" id="phd" value="phd">Doctoral Degree<br>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="vertical-align: top;">Technologies that you know</td>
+            <td>
+                <input type="checkbox" name="technologies1" id="technologies1" value="HTML">HTML<br>
+                <input type="checkbox" name="technologies2" id="technologies2" value="CSS">CSS<br>
+                <input type="checkbox" name="technologies3" id="technologies3" value="JS">JavaScript<br>
+                <input type="checkbox" name="technologies4" id="technologies4" value="PHP">PHP<br>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="vertical-align: top;">Description</td>
+            <td>
+                <textarea name="desc" id="desc" rows="5" placeholder="Enter description"></textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <button onclick="submitData()">Submit Data</button>
+            </td>
+        </tr>
+
+    </table>
+
+    <script>
+        function submitData() {
+            console.log("Inside submitData() function");
+            // Get form elements' values
+            let fname, lname, phone, email, description, state = "";
+            fname = document.getElementById("fname").value;
+            lname = document.getElementById("lname").value;
+            phone = document.getElementById("phone").value;
+            email = document.getElementById("email").value;
+            description = document.getElementById("desc").value;
+
+            console.log("First Name: " + fname);
+            console.log("Last Name: " + lname);
+            console.log("Phone: " + phone);
+            console.log("Email: " + email);
+            console.log("Description: " + description);
+
+            var e = document.getElementById("state");
+            state = e.value;
+            var text = e.options[e.selectedIndex].text;
+
+            console.log("Selected state value: " + state);
+            console.log("Selected state Text: " + text);
+
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+
+<body>
+
+    <h1>HTML Forms</h1>
+
+    <table>
+        <tr>
+            <td>Number 1</td>
+            <td>
+                <input type="number" name="num1" id="num1">
+            </td>
+        </tr>
+        <tr>
+            <td>Number 2</td>
+            <td>
+                <input type="number" name="num2" id="num2">
+            </td>
+        </tr>
+        <tr>
+            <td>Result</td>
+            <td>
+                <input type="text" name="result" id="result">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="button" value="Add Numbers" onclick="addNumbers()">
+                <!-- <button></button> -->
+            </td>
+        </tr>
+    </table>
+
+
+    <form action="#"><br>
+        First name:<br>  
+        <input type="text" name="firstname" value="Mickey"><br>
+        Last name:<br>  
+        <input type="text" name="lastname" value="Mouse">
+        <br>
+        <input type="submit" value="Submit">
+        </form>
+
+
+
+    <ul>
+        <li>use an onclick event listener</li>
+        <li>use the name of a javascript function</li>
+        <li>use a script html tag to wite the javascript function</li>
+        <li>make sure your program control goes inside the function</li>
+        <li>GET from items values</li>
+        <li>Convert text to number</li>
+        <li>Add the numbers</li>
+        <li>Show result on form element</li>
+    </ul>
+
+    <script>
+        function addNumbers() {
+            // make sure your program control goes inside the function
+            console.log("Inside addNumbers() function");
+
+            // GET from items values
+            var num1 = Number(document.getElementById("num1").value);
+            console.log("Number 1 = " + num1);
+
+            var num2 = Number(document.getElementById("num2").value);
+            console.log("Number 2 = " + num2);
+
+            let result = num1 + num2;
+            console.log("The result is " + result);
+
+            // Show result on form element
+            document.getElementById("result").value = result;
+
+        }
+
+
+
+    </script>
+
+
+</body>
+
+</html>
