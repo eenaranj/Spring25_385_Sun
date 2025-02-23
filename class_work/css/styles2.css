@@ -1,0 +1,53 @@
+/* 
+Name: John Smith
+SID:  12345678
+Date: 2025-02-16
+File Name: styles2.css
+*/
+
+/* external css */
+/* element selector */
+p {
+    color: yellow;
+    background-color: black;
+}
+
+/* class selectors */
+/* change only paragraphs with class="blue" */
+p.blue {
+    color: blue;
+    background-color: white;
+}
+
+div.blue {
+    color: aliceblue;
+    background-color: black;
+}
+
+.red {
+    color: red;
+    background-color: white;
+}
+
+.harleyd {
+    background-color: black;
+    color: orange;
+}
+
+/* id selecors */
+#purple2m {
+    color: purple;
+    font-size: 2em;
+    background-color: white;
+}
+
+#blue20 {
+    color: blue;
+    font-size: 20px;
+    background-color: white;
+}
+
+div#justthisone {
+    background-color: purple;
+    color: white;
+}

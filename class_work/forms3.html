@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms/JS</title>
+</head>
+<body>
+
+    <h1>Add Two Numbers</h1>
+
+    <table>
+        <tr>
+            <td>
+                <label for="num1">Number 1</label>
+            </td>
+            <td>
+                <input type="number" name="num1" id="num1">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="num2">Number 2</label>
+            </td>
+            <td>
+                <input type="number" name="num2" id="num2">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="reslut">Result</label>
+            </td>
+            <td>
+                <input type="text" name="result" id="result">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="button" value="Addition" 
+                onclick="addNumbers()">
+                <br>
+                <button onclick="subtractNumbers()">Subtraction</button>
+                <br>
+                <button onclick="multiplyNumbers()">Mutiplication</button>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        function addNumbers(){
+            console.log("Inside addNumbers() function");
+            // get numbers from the form
+            var num1 = Number(document.getElementById("num1").value);
+            console.log("Number 1 is: " + num1);
+
+            var num2 = Number(document.getElementById("num2").value);
+            console.log("Number 2 is: " + num2);
+
+            let result = num1 + num2;
+            console.log("The result is: " + result);
+
+            // write to form element
+            document.getElementById("result").value = result;
+
+        }
+
+        function subtractNumbers(){
+            console.log("Inside subtractNumbers() function");
+            var num1 = document.getElementById("num1").value;
+            var num2 = document.getElementById("num2").value;
+            result = (num1 - num2);
+            document.getElementById("result").value = result
+        }
+
+        function multiplyNumbers(){
+            console.log("Inside multiplyNumbers() function");
+            var num1 = document.getElementById("num1").value;
+            var num2 = document.getElementById("num2").value;
+            //result = (num1 * num2);
+            document.getElementById("result").value = (num1 * num2);
+        }
+    </script>
+    
+</body>
+</html>

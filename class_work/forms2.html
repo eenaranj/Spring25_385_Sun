@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+
+    
+</head>
+
+<body>
+
+    <h1>User Information</h1>
+
+    <table>
+        <tr>
+            <td>
+                <label for="fname">First Name</label>
+            </td>
+            <td>
+                <input type="text" name="fname" id="fname" value="Eduardo">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="lname">Last Name</label>
+            </td>
+            <td>
+                <input type="text" name="lname" id="lname" value="Naranjo">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="phone">Phone Number</label>
+            </td>
+            <td>
+                <input type="text" name="phone" id="phone" value="212-555-1212">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="button" value="Submit" onclick="getUserInfo()">
+            </td>
+        </tr>
+    </table>
+
+    <p id="userinfo_par">User Info</p>
+
+    <script>
+
+        var first_name = "";
+        // the next line will give you an error
+        //first_name = document.getElementById("fname").value;
+
+        // Function /**/
+        function getUserInfo() {
+            //alert('You clicked the button!');
+            console.log("Inside the getUserInfo function");
+
+            // Variables
+            var first_name = "";
+            let last_name = "";
+            let phone = "";
+
+            // Get values from form
+            // assign form values to js variables
+            first_name = document.getElementById("fname").value;
+            console.log("First Name: " + first_name);
+
+            last_name = document.getElementById("lname").value;
+            console.log("Last Name: " + last_name);
+
+            phone = document.getElementById("phone").value;
+            console.log("Phone: " + phone);
+
+            // Write info to the html page
+            document.getElementById("userinfo_par").innerHTML = "Welcome " +
+                first_name + " your phone number is " + phone;
+
+        }
+    </script>
+
+</body>
+
+</html>
