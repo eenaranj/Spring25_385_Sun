@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+
+    <h3>Students</h3>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody id="students_list"></tbody>
+    </table>
+
+    <select name="students_select" id="students_select"></select>
+
+    <script>
+        // Array of objects
+        var students = [
+            {id: 1, name: "John", age: 25},
+            {id: 2, name: "Mary", age: 21},
+            {id: 3, name: "Cristina", age: 23}
+        ];
+
+        var table_row = "";
+        var options = "";
+
+        for(var i = 0; i < students.length; i++){
+            console.log("Name: " + students[i].name);
+            console.log("Age:  " + students[i].age);
+
+            table_row += "<tr>";
+            table_row += "<td>" + students[i].name + "</td>";
+            table_row += "<td>" + students[i].age + "</td>";
+            table_row += "</tr>";
+
+            options += "<option value='" + students[i].id + "'>" + students[i].name + "</option>";
+        }
+        
+        // Add to table
+        document.getElementById("students_list").innerHTML += table_row;
+        
+        // Add to html select
+        document.getElementById("students_select").innerHTML = options;
+        
+    </script>
+    
+</body>
+</html>
