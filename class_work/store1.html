@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Store</title>
+
+</head>
+
+<body>
+
+    <h3>My Store</h3>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Description</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody id="store"></tbody>
+    </table>
+
+    <script>
+        function createStore() {
+            console.log("Inside function createStore()");
+            // array of product IDs
+            var prodid = [1, 2, 3, 4, 5, 6];
+            // array of product descriptions
+            let prod_desc = [
+                "Product Description 1",
+                "Product Description 2",
+                "Product Description 3",
+                "Product Description 4",
+                "Product Description 5",
+                "Product Description 6"
+            ];
+
+            var prices = [100,200,300,400,500,600,];
+
+            //<img src="images/headphoe1.jpg" alt="PD1">
+            // "images/headphoe1.jpg"
+            // headphoe1.jpg
+            // headphoe1
+            var images = [
+                "headphoe1",
+                "headphoe2",
+                "headphoe3",
+                "headphoe4",
+                "headphoe5",
+                "headphoe1"
+            ];
+
+            let table_row = "";
+            for (var i = 0; i < prodid.length; i++) {
+                table_row += "<tr>";
+                table_row += "<td>" + prodid[i] + "</td>";
+                table_row += "<td>" + prod_desc[i] + "</td>";
+                table_row += "<td>" + prices[i] + "</td>";
+                table_row += "<td><img src='images/" + images[i] + ".jpg' alt=\"" + prod_desc[i] + "\"></td>";
+                table_row += "</tr>";
+                console.log("ID " + prodid[i]);
+            }
+            document.getElementById("store").innerHTML += table_row;
+
+        } // end of function
+
+        // Call the function createStore()
+        createStore();
+    </script>
+
+</body>
+
+</html>
