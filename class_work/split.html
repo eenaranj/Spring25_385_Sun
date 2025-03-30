@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String.Split</title>
+</head>
+<body>
+
+    <h3>Split</h3>
+    <p id="result"></p>
+
+    <script>
+        window.onload = function(){
+            var a = "I am a sentence";
+            console.log(a);
+            document.getElementById("result").innerHTML = a + "<br>";
+
+            var b = a.split(" ");
+            console.log(a);
+
+            for(var i = 0; i < b.length; i++){
+                document.getElementById("result").innerHTML += b[i] + "<br>";
+            }
+
+
+        }
+    </script>
+    
+</body>
+</html>

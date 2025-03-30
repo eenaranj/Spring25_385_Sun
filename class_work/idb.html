@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndexedDB Person Manager</title>
+    <link rel="stylesheet" href="css/style3.css">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3478/3478441.png" type="image/png">
+
+</head>
+
+<body>
+    <div class="container">
+        <h2>IndexedDB Person Manager</h2>
+        <p>Manage a list of people. Add new persons or delete by ID.</p>
+
+        <form id="add-person-form">
+            <h3>Add Person</h3>
+            First Name: <input type="text" id="first-name" placeholder="Enter first name">
+            Last Name: <input type="text" id="last-name" placeholder="Enter last name">
+            Age: <input type="number" id="age" placeholder="Enter age">
+            
+
+            <button type="submit">Add Person</button>
+        </form>
+
+        <form id="delete-person-form">
+            <h3>Delete Person</h3>
+            ID to Delete: <input type="number" id="delete-id" placeholder="Enter ID to delete">
+            <button type="submit">Delete Person</button>
+        </form>
+
+        <ul id="people-list"></ul> <!-- The list of people will be displayed here -->
+    </div>
+
+    <script src="js/indexeddb.js"></script>
+</body>
+
+</html>
