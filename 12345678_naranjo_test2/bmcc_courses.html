@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMCC Courses</title>
+    <meta name="author" content="Eduardo Naranjo">
+    <meta name="description" content="This is athe index page for test 2">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h3>BMCC Courses</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Major</th>
+                    <th>Course ID</th>
+                    <th>Course Name</th>
+                    <th>Credit Hours</th>
+                </tr>
+            </thead>
+            <tbody id="courses_table"></tbody>
+        </table>
+    </div>
+
+    <script>
+        // window.onload = function(){
+        //     // do something
+        // };
+
+        window.addEventListener("load", loadCourses);
+
+        function loadCourses() {
+            console.log("Inside loadCourses");
+
+            var courses = [
+                { credit_hours: "3 CRS.4 HRS.", major: "CIS", course_number: "100", course_name: "Introduction to Computer Applications" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CIS", course_number: "115", course_name: "Introduction to Computer and Information Security" },
+                { credit_hours: "2 CRS.3 HRS.", major: "CIS", course_number: "120", course_name: "Introduction to Data Base Applications" },
+                { credit_hours: "2 CRS.3 HRS.", major: "CIS", course_number: "140", course_name: "Introduction to Spreadsheet Applications" },
+                { credit_hours: "4 CRS.3 HRS.2 LAB HRS.", major: "CIS", course_number: "155", course_name: "Computer Hardware" },
+                { credit_hours: "2 CRS.3 HRS.", major: "CIS", course_number: "160", course_name: "Desktop Publishing Packages" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CIS", course_number: "165", course_name: "Introduction to Operating Systems" },
+                { credit_hours: "3 CRS.4 HRS.", major: "CIS", course_number: "180", course_name: "Introduction to the Internet" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CIS", course_number: "200", course_name: "Introduction Systems and Technologies" },
+                { credit_hours: "4 CRS.2 HRS.4 LAB HRS.", major: "CIS", course_number: "207", course_name: "Healthcare Information Technologies and Management Systems" },
+                { credit_hours: "3 CRS.4 HRS.", major: "CIS", course_number: "220", course_name: "Visual BASIC" },
+                { credit_hours: "4 CRS.5 HRS.", major: "CIS", course_number: "235", course_name: "Computer Operations I" },
+                { credit_hours: "3 CRS.4 HRS.2 LAB HRS.", major: "CIS", course_number: "255", course_name: "Computer Software" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CIS", course_number: "272", course_name: "Introduction to Mobile App Development" },
+                { credit_hours: "3 CRS.4 HRS.", major: "CIS", course_number: "280", course_name: "Advanced Internet Applications" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CIS", course_number: "285", course_name: "Mobile Device Security" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CIS", course_number: "316", course_name: "Introduction to Digital Forensics" },
+                { credit_hours: "4 CRS.4 HRS.", major: "CIS", course_number: "317", course_name: "Introduction to Cryptography" },
+                { credit_hours: "3 CRS.4 HRS.", major: "CIS", course_number: "325", course_name: "Systems Analysis" },
+                { credit_hours: "3 CRS.5 HRS.", major: "CIS", course_number: "335", course_name: "Computer Operations II/ JCL" },
+                { credit_hours: "3 CRS.2 HRS.3 LAB HRS.", major: "CIS", course_number: "345", course_name: "Telecommunication Networks I" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CIS", course_number: "359", course_name: "Information Assurance" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CIS", course_number: "362", course_name: "Cloud Computing" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CIS", course_number: "364", course_name: "Mobile Device Programming" },
+                { credit_hours: "4 CRS.5 HRS.", major: "CIS", course_number: "365", course_name: "Business Systems I" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CIS", course_number: "370", course_name: "Database Driven Website Programming" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CIS", course_number: "385", course_name: "Web Programming I" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CIS", course_number: "390", course_name: "Wireless Programming" },
+                { credit_hours: "3 CRS.2 HRS.3 LAB HRS.", major: "CIS", course_number: "395", course_name: "Database Systems I" },
+                { credit_hours: "3 CRS.5 HRS.", major: "CIS", course_number: "420", course_name: "Systems Implementation" },
+                { credit_hours: "3 CRS.4 HRS.", major: "CIS", course_number: "440", course_name: "UNIX" },
+                { credit_hours: "3 CRS.2 HRS.3 LAB HRS.", major: "CIS", course_number: "445", course_name: "Telecommunications Networks II / LAN" },
+                { credit_hours: "3 CRS.2 HRS.3 LAB HRS.", major: "CIS", course_number: "455", course_name: "Network Security" },
+                { credit_hours: "3 CRS.3 HRS.2 LAB HRS.", major: "CIS", course_number: "459", course_name: "Ethical Hacking and System Defense" },
+                { credit_hours: "3 CRS.5 HRS.5 LAB HRS.", major: "CIS", course_number: "465", course_name: "Business Systems II" },
+                { credit_hours: "4 CRS.3 HRS.2 LAB HRS.", major: "CIS", course_number: "475", course_name: "Wireless Information Networks" },
+                { credit_hours: "3 CRS.3 HRS.CIS", major: "CIS", course_number: "480", course_name: "Operating Systems Concepts" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CIS", course_number: "485", course_name: "Web Programming II" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CIS", course_number: "490", course_name: "Introduction to Data Science" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CIS", course_number: "495", course_name: "Database Systems II" },
+
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CSC", course_number: "101", course_name: "Principles in Information Technology and Computation" },
+                { credit_hours: "3 CRS.4 HRS.", major: "CSC", course_number: "103", course_name: "Introduction to Data Analytics" },
+                { credit_hours: "4 CRS.5 HRS.", major: "CSC", course_number: "110", course_name: "Computer Programming I" },
+                { credit_hours: "4 CRS.3 HRS.2 LAB HRS.", major: "CSC", course_number: "111", course_name: "Introduction to Programming" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CSC", course_number: "203", course_name: "Python Programming for Data Science" },
+                { credit_hours: "3 CRS.2 HRS.3 LAB HRS.", major: "CSC", course_number: "210", course_name: "Computer Programming II" },
+                { credit_hours: "3 CRS.2 HRS.3 LAB HRS.", major: "CSC", course_number: "211", course_name: "Advanced Programming Techniques" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "CSC", course_number: "215", course_name: "Fundamentals of Computer Systems" },
+                { credit_hours: "3 CRS.3 HRS.3 LAB HRS.", major: "CSC", course_number: "230", course_name: "Discrete Structures" },
+                { credit_hours: "4 CRS.4 HRS.", major: "CSC", course_number: "231", course_name: "Discrete Structures and Applications to Computer Science" },
+                { credit_hours: "3 CRS.4 HRS.", major: "CSC", course_number: "310", course_name: "Assembler Language and Architecture I" },
+                { credit_hours: "3 CRS.4 HRS.CSC", major: "CSC", course_number: "330", course_name: "Data Structures I" },
+                { credit_hours: "3 CRS.1 HRS.4 LAB HRS.", major: "CSC", course_number: "331", course_name: "Data Structures" },
+                { credit_hours: "3 CRS.2 HRS.3 LAB HRS.", major: "CSC", course_number: "350", course_name: "Software Development" },
+                { credit_hours: "3 CRS.4 HRS.", major: "CSC", course_number: "410", course_name: "Assembler Language and Architecture II" },
+                { credit_hours: "3 CRS.4 HRS.", major: "CSC", course_number: "430", course_name: "Data Structures II" },
+                { credit_hours: "3 CRS.4 HRS.", major: "CSC", course_number: "450", course_name: "Computer Graphics" },
+                { credit_hours: "4 CRS.3 HRS.2 LAB HRS.", major: "CSC", course_number: "470", course_name: "Mathematical Foundations of Computer (Same as MAT 470)" },
+
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "GIS", course_number: "101", course_name: "Digital Earth" },
+                { credit_hours: "4 CRS.3 HRS.3 LAB HRS.", major: "GIS", course_number: "201", course_name: "Introduction to Geographic Methods" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "GIS", course_number: "261", course_name: "Introduction to Geographic Information Science" },
+                { credit_hours: "2 CRS.15 HRS.", major: "GIS", course_number: "325", course_name: "GIS Internship" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "GIS", course_number: "361", course_name: "Advanced Geographic Information Science" },
+
+                { credit_hours: "3 CRS.4 HRS.", major: "BUS", course_number: "104", course_name: "Introduction to Business" },
+                { credit_hours: "3 CRS.3 HRS.", major: "BUS", course_number: "110", course_name: "Business Law" },
+                { credit_hours: "3 CRS.3 HRS.", major: "BUS", course_number: "110.5", course_name: "Business Law for Digital Media" },
+                { credit_hours: "3 CRS.3 HRS.", major: "BUS", course_number: "121", course_name: "Personal Finance" },
+                { credit_hours: "3 CRS.3 HRS.", major: "BUS", course_number: "150", course_name: "Business Communication" },
+                { credit_hours: "3 CRS.3 HRS.", major: "BUS", course_number: "200", course_name: "Business Organization and Management" },
+                { credit_hours: "3 CRS.3 HRS.", major: "BUS", course_number: "201", course_name: "International Business (Same as SBE 201)" },
+                { credit_hours: "3 CRS.3 HRS.", major: "BUS", course_number: "210", course_name: "Business Methods" },
+                { credit_hours: "3 CRS.3 HRS.", major: "BUS", course_number: "219", course_name: "Business Analytics" },
+                { credit_hours: "3 CRS.3 HRS.", major: "BUS", course_number: "220", course_name: "Managerial Decision Making" },
+                { credit_hours: "3 CRS.3 HRS.", major: "BUS", course_number: "225", course_name: "Operations Management" },
+                { credit_hours: "3 CRS.3 HRS.", major: "BUS", course_number: "311", course_name: "Human Resources Management" },
+                { credit_hours: "4 CRS.4 HRS.", major: "BUS", course_number: "320", course_name: "Predictive Analytics & Decision Modeling" },
+                { credit_hours: "3 CRS.3 HRS.", major: "BUS", course_number: "476", course_name: "Social Entrepreneurship in Emerging Economics" },
+
+                { credit_hours: "3 CRS.3 HRS.", major: "FNB", course_number: "100", course_name: "Introduction to Finance" },
+                { credit_hours: "3 CRS.3 HRS.", major: "FNB", course_number: "230", course_name: "Financial Management" },
+                { credit_hours: "3 CRS.3 HRS.", major: "FNB", course_number: "250", course_name: "Money & Banking (Same as ECO 250)" },
+                { credit_hours: "3 CRS.3 HRS.", major: "FNB", course_number: "300", course_name: "Investments" },
+
+                { credit_hours: "3 CRS.3 HRS.", major: "MAR", course_number: "100", course_name: "Introduction to Marketing" },
+                { credit_hours: "3 CRS.3 HRS.", major: "MAR", course_number: "210", course_name: "Consumer Motivation" },
+                { credit_hours: "3 CRS.3 HRS.", major: "MAR", course_number: "220", course_name: "Essentials of Advertising" },
+                { credit_hours: "3 CRS.3 HRS.", major: "MAR", course_number: "230", course_name: "Essentials of Public Relations" },
+                { credit_hours: "3 CRS.3 HRS.", major: "MAR", course_number: "300", course_name: "Sales Principles and Practices" },
+                { credit_hours: "3 CRS.3 HRS.", major: "MAR", course_number: "320", course_name: "Retail Organization, Operation and Buying" },
+                { credit_hours: "3 CRS.4 HRS.", major: "MAR", course_number: "330", course_name: "Marketing Research and Analytics" },
+                { credit_hours: "3 CRS.4 HRS.", major: "MAR", course_number: "340", course_name: "Digital Marketing and Analytics" },
+
+                { credit_hours: "3 CRS.3 HRS.", major: "OFF", course_number: "111", course_name: "Computer Keyboarding" },
+
+                { credit_hours: "3 CRS.3 HRS.", major: "PAN", course_number: "100", course_name: "Introduction to Public Affairs and Administration" },
+                { credit_hours: "3 CRS.3 HRS.", major: "PAN", course_number: "230", course_name: "Policy Development and Analysis" },
+                { credit_hours: "3 CRS.3 HRS.", major: "PAN", course_number: "240", course_name: "Research Methods in Nonprofit and Public Administration" },
+                { credit_hours: "3 CRS.3 HRS.", major: "PAN", course_number: "250", course_name: "Performance Measurement: Collecting and Interpreting Data" },
+
+                { credit_hours: "3 CRS.3 HRS.", major: "RMI", course_number: "110", course_name: "Principles of Risk Management and Insurance" },
+                { credit_hours: "3 CRS.3 HRS.", major: "RMI", course_number: "220", course_name: "Property and Liability Insurance Principles" },
+                { credit_hours: "3 CRS.3 HRS.", major: "RMI", course_number: "230", course_name: "Commercial Insurance Principles" },
+                { credit_hours: "3 CRS.3 HRS.", major: "RMI", course_number: "240", course_name: "Insurance Operations" },
+
+                { credit_hours: "3 CRS.3 HRS.", major: "SBE", course_number: "100", course_name: "Entrepreneurship: Product and Service Creation" },
+                { credit_hours: "3 CRS.3 HRS.", major: "SBE", course_number: "201", course_name: "International Business (Same as BUS 201)" },
+                { credit_hours: "3 CRS.3 HRS.", major: "SBE", course_number: "400", course_name: "Small Business Management" },
+
+                { credit_hours: "3 CRS.3 HRS.", major: "HTT", course_number: "200", course_name: "Introduction to Hotels, Travel and Tourism (Same as TTA 200)" },
+                { credit_hours: "3 CRS.3 HRS.", major: "HTT", course_number: "201", course_name: "Hotels, Travel and Tourism Technology (Same as TTA 201)" },
+                { credit_hours: "3 CRS.3 HRS.", major: "HTT", course_number: "301", course_name: "World Markets (Same as TTA 301)" },
+                { credit_hours: "3 CRS.3 HRS.", major: "HTT", course_number: "350", course_name: "Customer Experience" },
+
+                { credit_hours: "3 CRS.4 HRS.", major: "ANI", course_number: "260", course_name: "Introduction to 2D Animation" },
+                { credit_hours: "3 CRS.4 HRS.", major: "ANI", course_number: "301", course_name: "Introduction to Motion Graphics and Visual Effects" },
+                { credit_hours: "3 CRS.4 HRS.", major: "ANI", course_number: "360", course_name: "2D Animation Projects" },
+                { credit_hours: "3 CRS.4 HRS.", major: "ANI", course_number: "401", course_name: "Introduction to 3D Animation" },
+                { credit_hours: "3 CRS.4 HRS.", major: "ANI", course_number: "402", course_name: "3D Animation Projects" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "ANI", course_number: "411", course_name: "Introduction to Virtual Production" },
+
+                { credit_hours: "2 CRS.2 HRS.", major: "MEA", course_number: "201", course_name: "Professional Development and Career Planning in Media Arts and Technology" },
+                { credit_hours: "3 CRS.4 HRS.2 LAB HRS.", major: "MEA", course_number: "211", course_name: "Introduction to Digital Fabrication and Physical Computing" },
+                { credit_hours: "3 CRS.4 HRS.", major: "MEA", course_number: "300", course_name: "Topics in Media Arts and Technology" },
+                { credit_hours: "2 CRS.11.5 HRS.", major: "MEA", course_number: "371", course_name: "Media Arts and Technology Internship" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "MES", course_number: "140", course_name: "Introduction to the Moving Image" },
+                { credit_hours: "3 CRS.3 HRS.3 LAB HRS.", major: "MES", course_number: "152", course_name: "Introduction to Contemporary Media" },
+                { credit_hours: "3 CRS.3 HRS.", major: "MES", course_number: "153", course_name: "Script Writing" },
+                { credit_hours: "3 CRS.3 HRS.", major: "MES", course_number: "160", course_name: "World History of Animation" },
+                { credit_hours: "3 CRS.3 HRS.", major: "MES", course_number: "251", course_name: "Television Writing" },
+                { credit_hours: "3 CRS.4 HRS.", major: "MMA", course_number: "100", course_name: "Foundations of Digital Graphic Design" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "MMA", course_number: "215", course_name: "Typography and Layout (same as ART 215)" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "MMA", course_number: "225", course_name: "Digital Imaging for Graphic Design (Same as ART 225)" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "MMA", course_number: "235", course_name: "Visual Communication and Design(Same as ART 235)" },
+                { credit_hours: "3 CRS.4 HRS.", major: "MMP", course_number: "100", course_name: "Introduction to Multimedia" },
+                { credit_hours: "3 CRS.4 HRS.", major: "MMP", course_number: "200", course_name: "Multimedia Design" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "MMP", course_number: "202", course_name: "Introduction to User Experience Design" },
+                { credit_hours: "3 CRS.4 HRS.", major: "MMP", course_number: "210", course_name: "Multimedia Programming I" },
+                { credit_hours: "4 CRS.5 HRS.", major: "MMP", course_number: "220", course_name: "Programming for Multimedia" },
+                { credit_hours: "4 CRS.5 HRS.", major: "MMP", course_number: "230", course_name: "Interaction Design with Multimedia Programming" },
+                { credit_hours: "3 CRS.4 HRS.", major: "MMP", course_number: "240", course_name: "Web Design" },
+                { credit_hours: "3 CRS.4 HRS.", major: "MMP", course_number: "250", course_name: "Digital Film Fundamentals" },
+                { credit_hours: "3 CRS.4 HRS.", major: "MMP", course_number: "270", course_name: "Introduction to Video Game Design" },
+                { credit_hours: "3 CRS.2 HRS.3 LAB HRS.", major: "MMP", course_number: "271", course_name: "3D Game Development" },
+                { credit_hours: "3 CRS.4 HRS.", major: "MMP", course_number: "280", course_name: "Type in Motion" },
+                { credit_hours: "3 CRS.4 HRS.", major: "MMP", course_number: "301", course_name: "Introduction to Video Graphics (Same as VAT 301)" },
+                { credit_hours: "3 CRS.4 HRS.", major: "MMP", course_number: "310", course_name: "Multimedia Programming II" },
+                { credit_hours: "4 CRS.3 HRS.", major: "MMP", course_number: "320", course_name: "Multimedia Networks" },
+                { credit_hours: "3 CRS.4 HRS.", major: "MMP", course_number: "340", course_name: "Content Development for the Web" },
+                { credit_hours: "3 CRS.4 HRS.", major: "MMP ", course_number: "350", course_name: "Advanced Web Design" },
+                { credit_hours: "3 CRS.4 HRS.", major: "MMP", course_number: "401", course_name: "Introduction to 3D Motion Graphics for Video, Film, Game, Multimedia and Internet (Same as VAT 401)" },
+                { credit_hours: "4 CRS.5 HRS.", major: "MMP", course_number: "420", course_name: "Distributed Multimedia Applications" },
+                { credit_hours: "4 CRS.5 HRS.", major: "MMP", course_number: "460", course_name: "Multimedia Project Lab" },
+                { credit_hours: "3 CRS.3 HRS.", major: "VAT", course_number: "100", course_name: "Introduction to Video Technology" },
+                { credit_hours: "3 CRS.3 HRS.", major: "VAT", course_number: "150", course_name: "Introduction to Corporate Media Applications" },
+                { credit_hours: "3 CRS.3 HRS.", major: "VAT", course_number: "151", course_name: "Script to Screen" },
+                { credit_hours: "3 CRS.3 HRS.", major: "VAT", course_number: "152", course_name: "Introduction to Media Applications" },
+                { credit_hours: "3 CRS.3 HRS.", major: "VAT", course_number: "153", course_name: "Scriptwriting" },
+                { credit_hours: "3 CRS.2 HRS.", major: "VAT", course_number: "160", course_name: "TV Studio Production for Business I" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "VAT", course_number: "161", course_name: "TV Studio Production I" },
+                { credit_hours: "3 CRS.3 HRS.", major: "VAT", course_number: "165", course_name: "Sound for Performance/Digital Media I" },
+                { credit_hours: "3 CRS.2 HRS.", major: "VAT", course_number: "170", course_name: "Remote Production/Video Editing I" },
+                { credit_hours: "3 CRS.2 HRS.2 LAB HRS.", major: "VAT", course_number: "171", course_name: "Remote Production/Video Editing I" },
+                { credit_hours: "3 CRS.2 HRS.", major: "VAT", course_number: "260", course_name: "TV Studio Production for Business II" },
+                { credit_hours: "3 CRS.2 HRS.", major: "VAT", course_number: "261", course_name: "TV Studio Production II" },
+                { credit_hours: "3 CRS.3 HRS.", major: "VAT", course_number: "265", course_name: "Sound for Performance/Digital Media II" },
+                { credit_hours: "3 CRS.4 HRS.", major: "VAT", course_number: "271", course_name: "Remote Production/Video Editing II" },
+                { credit_hours: "3 CRS.3 HRS.", major: "VAT", course_number: "302", course_name: "Lighting for Television" },
+                { credit_hours: "3 CRS.4 HRS.", major: "VAT", course_number: "303", course_name: "Cinematography" },
+                { credit_hours: "3 CRS.4 HRS.", major: "VAT", course_number: "310", course_name: "Experimental Film" },
+                { credit_hours: "3 CRS.4 HRS.", major: "VAT", course_number: "311", course_name: "Directing Actors for Camera" },
+                { credit_hours: "3 CRS.4 HRS.", major: "VAT", course_number: "312", course_name: "Multi-Camera Remote Production" },
+                { credit_hours: "3 CRS.4 HRS.", major: "VAT", course_number: "313", course_name: "Documentary Production" },
+                { credit_hours: "3 CRS.4 HRS.4 LAB HRS.", major: "VAT", course_number: "401", course_name: "Introduction to 3D Motion Graphics for Video, Film, Game, Multimedia and Internet" }
+            ];
+
+            var table_row = "";
+
+            for(var i = 0; i < courses.length; i++){
+                table_row += `
+                <tr>
+                    <td>${courses[i].major}</td>    
+                    <td>${courses[i].course_number}</td>  
+                    <td>${courses[i].course_name}</td>  
+                    <td>${courses[i].credit_hours}</td>  
+                </tr>
+                `;
+            }
+
+            document.getElementById("courses_table").innerHTML = table_row;
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

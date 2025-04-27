@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Table</title>
+    <meta name="author" content="Eduardo Naranjo">
+    <meta name="description" content="This is athe index page for test 2">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h3>CIS Faculty</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Room</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Office Hours</th>
+                </tr>
+            </thead>
+            <tbody id="faculty_table_1"></tbody>
+        </table>
+    </div>
+
+    <script>
+        window.addEventListener("load", loadFaculty1);
+
+        function loadFaculty1() {
+            console.log("Inside function loadFaculty1");
+
+            var faculty = [
+                { email: "cwei@bmcc.cuny.edu", phonname: "(212) 220-8385", room: "F-930A", office_hours: "Monday, Wednesday 4:00PM-5:00 PM", name: "Ching-Song Wei", title: "Professor" },
+                { email: "tavcilar@bmcc.cuny.edu", phonname: "(212) 220-1478", room: "F-930J", office_hours: "", name: "Tamer Avcilar", title: "Lecturer" },
+                { email: "mazhar@bmcc.cuny.edu", phonname: "(212) 220-1477", room: "F-930L", office_hours: "", name: "Mohammad Azhar", title: "Professor" },
+                { email: "ybenkarroum@bmcc.cuny.edu", phonname: "(212) 776-7227", room: "F-1030L", office_hours: "", name: "Younes Benkarroum", title: "Assistant Professor" },
+                { email: "hbleckleycoly@bmcc.cuny.edu", phonname: "(212) 220-1382", room: "S-510H", office_hours: "", name: "Helen Bleckley-Coly", title: "Adjunct Lecturer" },
+                { email: "kbyron@bmcc.cuny.edu", phonname: "(212) 220-1490", room: "F-1030I", office_hours: "Office Hours: Spring 2025 office hours: Tuesday 2pm-5pm; Location Fiterman Hall Room F-1030-IO and on Zoom (see Brightspace course announcements)", name: "Kevin Byron", title: "Assistant Professor" },
+                { email: "machan@bmcc.cuny.edu", phonname: "(212) 776-7228", room: "F-930I", office_hours: "Office Hours: Thurs, (11-12 p .m.) ,Fri. (10 - 11 a.m.)", name: "Matthew Chan", title: "Assistant Professor" },
+                { email: "ychen@bmcc.cuny.edu", phonname: "(212) 220-8384", room: "F-930H", office_hours: "", name: "Yan Chen", title: "Professor" },
+                { email: "cconnallon@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Christopher Connallon", title: "Adjunct Lecturer" },
+                { email: "reckman@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "  Robert Eckman", title: "Adjunct Lecturer" },
+                { email: "aerrera@bmcc.cuny.edu", phonname: "(212) 220-1483", room: "F-930Q", office_hours: "", name: "Alberto Errera", title: "Professor" },
+                { email: "meligarcia@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Melissa Garcia", title: "Adjunct Lecturer" },
+                { email: "ygenis@bmcc.cuny.edu", phonname: "(212) 220-1482", room: "F-930G", office_hours: "", name: "Yakov Genis", title: "Professor" },
+                { email: "rgreer@bmcc.cuny.edu", phonname: "(212) 346-8450", room: "F-930V", office_hours: "", name: "  Robert Greer", title: "Lecturer" },
+                { email: "rjara@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "  Rhea Jara", title: "Adjunct Lecturer" },
+                { email: "djayaweera@bmcc.cuny.edu", phonname: "(212) 220-1261", room: "F-1030H", office_hours: "", name: "Darshani Jayaweera", title: "Instructor" },
+                { email: "gkahanda@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Galathara Kahanda", title: "Adjunct Assistant Professor" },
+                { email: "dkalicharan@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Dharamraj Kalicharan", title: "Adjunct Lecturer" },
+                { email: "kkwon@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Kiwook Kwon", title: "Adjunct Lecturer" },
+                { email: "lleung@bmcc.cuny.edu", phonname: "(212) 220-1491", room: "F-0930K", office_hours: "", name: "Lin Leung", title: "Professor" },
+                { email: "clinares@bmcc.cuny.edu", phonname: "(212) 220-1485", room: "F-930U", office_hours: "", name: "Carlos Linares", title: "Associate Professor" },
+                { email: "enaranjorivera@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "  Eduardo Naranjo Rivera", title: "Adjunct Lecturer" },
+                { email: "rnossa@bmcc.cuny.edu", phonname: "(212) 220-1501", room: "F-1030N", office_hours: "", name: "Rachel Nossa", title: "Instructor" },
+                { email: "gnossa@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "George Nossa", title: "Instructor" },
+                { email: "lofaire@bmcc.cuny.edu", phonname: "(212) 220-1492", room: "F-930S", office_hours: "", name: "LaShawna O'Faire", title: "Instructor" },
+                { email: "dpatrick@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Dexter Patrick", title: "Adjunct Lecturer" },
+                { email: "cpersaud@bmcc.cuny.edu", phonname: "(212) 346-8639", room: "F-930F", office_hours: "", name: "Colin Persaud", title: "Assistant Professor" },
+                { email: "aramlal@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Alan Ramlal", title: "Adjunct Lecturer" },
+                { email: "csrani@bmcc.cuny.edu", phonname: "(212) 220-1487", room: "F-930M", office_hours: "", name: "Chigurupati Rani", title: "Assistant Professor" },
+                { email: "rirogers@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Ricaute Rogers", title: "Adjunct Lecturer" },
+                { email: "asalvati@bmcc.cuny.edu", phonname: "(212) 220-1480", room: "F-930P", office_hours: "", name: "Anna Salvati", title: "Associate Professor" },
+                { email: "josantos@bmcc.cuny.edu", phonname: "", room: "F-930O", office_hours: "", name: "  Jose Ramon Santos", title: "Adjunct Lecturer" },
+                { email: "ascheiman@bmcc.cuny.edu", phonname: "(212) 220-7227", room: "F-1030L", office_hours: "", name: "Arnold Scheiman", title: "Adjunct Assistant Professor" },
+                { email: "iskuratovskiy@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Igor Skuratovskiy", title: "Adjunct Lecturer" },
+                { email: "grsmith@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Grace Smith", title: "Adjunct Lecturer" },
+                { email: "htang@bmcc.cuny.edu", phonname: "(212) 220-1479", room: "F-930N", office_hours: "", name: "Hao Tang", title: "Professor" },
+                { email: "jvargas@bmcc.cuny.edu", phonname: "(212) 220-1481", room: "F-930T", office_hours: "Office Hours: Friday: 5-7PM", name: "Jose Vargas", title: "Lecturer" },
+                { email: "mvatankhah@bmcc.cuny.edu", phonname: "(212) 220-1488", room: "F-1030M", office_hours: "", name: "Maryam Vatankhah", title: "Assistant Professor" },
+                { email: "mveyler@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Mikhail Veyler", title: "Adjunct Lecturer" },
+                { email: "lyan@bmcc.cuny.edu", phonname: "(212) 220-1501", room: "F-1030N", office_hours: "", name: "Louise Yan", title: "Adjunct Lecturer" },
+                { email: "nyounisabufarha@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Norman Younis Abufarha", title: "Adjunct Lecturer" },
+                { email: "gyu@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Gene Yu", title: "Adjunct Assistant Professor" },
+                { email: "azeidan@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Ayman Zeidan", title: "Adjunct Assistant Professor" },
+                { email: "aadesman@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Alexander Adesman", title: "Adjunct Assistant Professor" },
+                { email: "mohaalam@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Mohammad Alam", title: "Adjunct Lecturer" },
+                { email: "dhamaratunge@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Dhananji Amaratunge", title: "Adjunct Lecturer" },
+                { email: "randerson@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Rahcim Anderson", title: "Adjunct Lecturer" },
+                { email: "aaziz@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Abdul Aziz", title: "Adjunct Lecturer" },
+                { email: "ibarr@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "  Ian Barr", title: "Adjunct Lecturer" },
+                { email: "sbenincasa@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Santina Benincasa", title: "Adjunct Lecturer" },
+                { email: "mcai@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Mingqi Cai", title: "Adjunct Lecturer" },
+                { email: "tcai@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Tian Cai", title: "Adjunct Lecturer" },
+                { email: "juxie@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Jin Chen", title: "" },
+                { email: "kcoleman@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Kenneth Coleman", title: "Adjunct Lecturer" },
+                { email: "cconnallon@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Christopher Connallon", title: "Adjunct Lecturer" },
+                { email: "msconroy@bmcc.cuny.edu", phonname: "(212) 776-2434", room: "S-140M", office_hours: "Office Hours: Tuesday - Friday 5:00-6:00 PM (all hours by appointment)", name: "Matthew Conroy", title: "Adjunct Lecturer" },
+                { email: "kcooper@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Kenneth Cooper", title: "Adjunct Lecturer" },
+                { email: "aldelacruz@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Albert Delacruz", title: "Adjunct Lecturer" },
+                { email: "pgarraway@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Paulrick Garraway", title: "Adjunct Lecturer" },
+                { email: "nhasan@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Naushad Hasan", title: "Adjunct Lecturer" },
+                { email: "cahernandez@bmcc.cuny.edu", phonname: "(212) 220-8000;ext=7935", room: "", office_hours: "", name: "Candido Hernandez", title: "Adjunct Assistant Professor" },
+                { email: "naholmes@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Yiming Lin", title: "" },
+                { email: "hchristie@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Vernon Mckenzie", title: "Adjunct Lecturer" },
+                { email: "rrusmin@bmcc.cuny.edu", phonname: "(212) 776-6212", room: "S510A", office_hours: "", name: "Ruru Rusmin", title: "Adjunct Lecturer" },
+                { email: "atoliyatabolhassani@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Amir Mohsen Toliyat Abolhassani", title: "Adjunct Lecturer" },
+                { email: "pwongchanapai@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Paradorn Wongchanapai", title: "Adjunct Lecturer" },
+                { email: "myasin@bmcc.cuny.edu", phonname: "", room: "E-1522", office_hours: "", name: "Musab Yasin", title: "Adjunct Lecturer" },
+                { email: "fortiz@bmcc.cuny.edu", phonname: "", room: "", office_hours: "", name: "Zakearah Young", title: "College Assistant" }
+            ];
+
+            var table_row = "";
+
+            for(var i = 0; i < faculty.length; i++){
+                table_row += `
+                <tr>
+                    <td>${faculty[i].name}</td>    
+                    <td>${faculty[i].title}</td>  
+                    <td>${faculty[i].room}</td>  
+                    <td>${faculty[i].email}</td>  
+                    <td>${faculty[i].phonname}</td>  
+                    <td>${faculty[i].office_hours}</td> 
+                </tr>
+                `;
+            }
+
+            document.getElementById("faculty_table_1").innerHTML = table_row;
+
+
+        }
+
+    </script>
+
+</body>
+
+</html>
